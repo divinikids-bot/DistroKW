@@ -1,50 +1,90 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
-// 1️⃣ Bikin interface item keranjang
-interface CartItem {
+type CartItem = {
   id: string;
   name: string;
   price: number;
   quantity: number;
-}
+  image?: string; // buat support gambar di CartPage
+  color?: string; // tambahan info produk
+  size?: string;  // tambahan info produk
+};
 
-// 2️⃣ Buat interface buat context-nya
-interface CartContextType {
+type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-}
+  removeFromCart: (id: string) => void;
+  clearCart: () => void;
+  updateQuantity: (id: string, quantity: number) => void;
+};
 
-// 3️⃣ Bikin context
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// 4️⃣ Provider buat di wrap di layout.tsx
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  // ✅ Sync ke localStorage
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // ✅ Tambah item
   const addToCart = (item: CartItem) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(i => i.id === item.id);
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((i) => i.id === item.id);
       if (existingItem) {
-        return prevItems.map(i =>
-          i.id === item.id
-            ? { ...i, quantity: i.quantity + 1 }
-            : i
+        return prevItems.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
         );
+      } else {
+        return [...prevItems, item];
       }
-      return [...prevItems, { ...item, quantity: 1 }];
     });
   };
 
+  // ✅ Hapus 1 item
+  const removeFromCart = (id: string) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
+  // ✅ Kosongkan keranjang
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  // ✅ Update jumlah (buat select dropdown)
+  const updateQuantity = (id: string, quantity: number) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: quantity } : item
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        updateQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
 
-// 5️⃣ Hook untuk ambil data di komponen lain
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

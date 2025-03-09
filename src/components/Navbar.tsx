@@ -77,8 +77,8 @@ export default function Navbar() {
         <Image
           src="/logo.png"
           alt="DivineClothing logo"
-          width={100}
-          height={40}
+          width={150}
+          height={500}
           className="h-10 cursor-pointer"
           onClick={() => router.push("/")}
         />
