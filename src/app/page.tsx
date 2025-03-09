@@ -1,18 +1,21 @@
-import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel";
-import Footer from "@/components/Footer"; // Import Footer
+import { CartProvider } from "@/components/contexts/CartContext";
 
 export default function Home() {
+  // Gambar khusus untuk homepage
+  const homeImages = [
+    "/kaos.jpg",
+    "/kaos2.jpg",
+    "/kaos3.jpg",
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Navbar */}
-      <Navbar />
-
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-center min-h-screen p-10">
         {/* Carousel */}
         <div className="w-full md:w-1/2 flex justify-center">
-          <Carousel />
+          <Carousel images={homeImages} />
         </div>
 
         {/* Text Content */}
@@ -28,9 +31,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

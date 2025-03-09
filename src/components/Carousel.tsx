@@ -2,52 +2,43 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const images = [
-  "/kaos.jpg",
-  "/kaos2.jpg",
-  "/kaos3.jpg"
-];
+interface CarouselProps {
+  images: string[];
+}
 
-export default function Carousel() {
-  const [current, setCurrent] = useState(0);
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+export default function Carousel({ images }: CarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto">
-      {/* Gambar */}
-      <div className="relative flex justify-center items-center">
-        <Image 
-          src={images[current]} 
-          alt={`Slide ${current + 1}`} 
-          width={500} 
-          height={300} 
-          className="rounded-lg object-cover"
-        />
-      </div>
-
-      {/* Arrow Kiri */}
+    <div className="relative w-full max-w-md mx-auto">
+      <Image
+        src={images[currentIndex]}
+        alt="Carousel Image"
+        width={500}
+        height={500}
+        className="w-full rounded-lg"
+      />
+      {/* Tombol Navigasi */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
         onClick={prevSlide}
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-opacity-10 bg-black  text-white p-2 rounded-full"
       >
-        <FaChevronLeft size={24} />
+        ◀
       </button>
-
-      {/* Arrow Kanan */}
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
         onClick={nextSlide}
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-opacity-10 bg-black text-white p-2 rounded-full"
       >
-        <FaChevronRight size={24} />
+        ▶
       </button>
     </div>
   );
