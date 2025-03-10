@@ -105,20 +105,20 @@ export default function Navbar() {
 
           {isCartDropdownOpen && (
             <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg border rounded p-4 z-50">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <FiShoppingBag className="text-gray-500" /> Keranjang
+              <h3 className="font-semibold mb-3 text-black flex items-center gap-2">
+                <FiShoppingBag className="text-black" /> Keranjang
               </h3>
 
               {cartItems.length === 0 ? (
-                <p className="text-sm text-gray-500">Keranjang kosong</p>
+                <p className="text-sm text-black">Keranjang kosong</p>
               ) : (
-                <ul className="divide-y divide-gray-200 max-h-64 overflow-y-auto">
+                <ul className="divide-y divide-black max-h-64 overflow-y-auto">
                   {cartItems.map((item) => (
                     <li key={item.id} className="py-2">
                       <div className="flex justify-between">
-                        <p className="font-medium">{item.name}</p>
+                        <p className="font-medium text-black">{item.name}</p>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-black">
                         Qty: {item.quantity}
                       </div>
                       <div className="text-sm text-blue-600 font-semibold">
@@ -140,7 +140,7 @@ export default function Navbar() {
                     </span>
                   </div>
 
-                  <div className="flex justify-between mt-1 text-base font-semibold">
+                  <div className="flex justify-between mt-1 text-base text-black font-semibold">
                     <span>Total:</span>
                     <span className="text-green-600">
                       Rp{" "}

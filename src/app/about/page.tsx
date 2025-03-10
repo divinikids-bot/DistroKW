@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel"; // Carousel dengan gambar berbeda dari homepage
 
 export default function AboutUs() {
@@ -35,9 +34,6 @@ export default function AboutUs() {
           </button>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
