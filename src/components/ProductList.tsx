@@ -21,14 +21,18 @@ export default function ProductList() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Panggil API dari Backendless
     axios
-      .get<Product[]>("https://moralapparel-us.backendless.app/api/data/products")
+      .get<Product[]>(
+        "https://moralapparel-us.backendless.app/api/data/products?pageSize=20"
+      )
       .then((response) => {
+        console.log("Jumlah Produk:", response.data.length);
+        console.log(response.data);
         setProducts(response.data);
         setLoading(false);
       })
       .catch((err) => {
+        console.error("Gagal fetch produk:", err);
         setError(err.message);
         setLoading(false);
       });

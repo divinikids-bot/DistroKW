@@ -1,6 +1,7 @@
 "use client";
 
 import Carousel from "@/components/Carousel"; // Carousel dengan gambar berbeda dari homepage
+import Link from "next/link";
 
 export default function AboutUs() {
   return (
@@ -29,9 +30,11 @@ export default function AboutUs() {
             At Divine Clothing, we believe that fashion should be more than just fabric—it should empower and inspire. Our brand is for those 
             who dare to be different, who embrace their own divinity in style.
           </p>
+          <Link href="/products">
           <button className="border-2 border-white text-white px-6 py-2 mt-4 hover:bg-white hover:text-black transition">
             Explore Our Collection
           </button>
+          </Link>
         </div>
       </section>
     </div>
