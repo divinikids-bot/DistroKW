@@ -32,21 +32,21 @@ export default function CartPage() {
           <div className="md:col-span-2 space-y-6">
             {cartItems.map((item) => (
               <div
-                key={item.id}
+                key={`${item.id}-${item.size}-${item.color}`} // ✅ KEY UNIK di sini
                 className="flex flex-col md:flex-row justify-between bg-zinc-900 p-4 rounded-xl shadow-md"
               >
                 {/* Left */}
                 <div className="flex space-x-4">
-                <div className="w-24 h-24 bg-white rounded-md overflow-hidden relative">
+                  <div className="w-24 h-24 bg-white rounded-md overflow-hidden relative">
                     <Image
-                        src={item.image || "https://via.placeholder.com/300x400?text=No+Image"}
-                        alt={item.name}
-                        width={96}
-                        height={96}
-                        className="object-cover w-full h-full rounded"
-                        unoptimized
+                      src={item.image || "https://via.placeholder.com/300x400?text=No+Image"}
+                      alt={item.name}
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full rounded"
+                      unoptimized
                     />
-                    </div>
+                  </div>
 
                   <div>
                     <h2 className="font-bold text-lg">{item.name}</h2>
@@ -69,7 +69,12 @@ export default function CartPage() {
                     <select
                       value={item.quantity}
                       onChange={(e) =>
-                        updateQuantity(item.id, parseInt(e.target.value))
+                        updateQuantity(
+                          item.id,
+                          parseInt(e.target.value),
+                          item.size,
+                          item.color
+                        ) // ✅ TAMBAH size dan color
                       }
                       className="bg-zinc-800 text-white border border-gray-600 rounded px-2 py-1"
                     >
@@ -83,7 +88,7 @@ export default function CartPage() {
 
                   <div className="mt-2">
                     <button
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.id, item.size, item.color)} // ✅ TAMBAH size dan color
                       className="bg-red-600 text-white text-sm px-4 py-1 rounded hover:bg-red-700 transition"
                     >
                       Hapus

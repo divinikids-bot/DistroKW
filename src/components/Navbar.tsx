@@ -2,17 +2,26 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCart } from "@/components/contexts/CartContext";
 
 // ✅ Dynamic import buat react-icons
-const FiSearch = dynamic(() => import('react-icons/fi').then(mod => mod.FiSearch), { ssr: false });
-const FiShoppingBag = dynamic(() => import('react-icons/fi').then(mod => mod.FiShoppingBag), { ssr: false });
+const FiSearch = dynamic(
+  () => import("react-icons/fi").then((mod) => mod.FiSearch),
+  { ssr: false }
+);
+const FiShoppingBag = dynamic(
+  () => import("react-icons/fi").then((mod) => mod.FiShoppingBag),
+  { ssr: false }
+);
 
 export default function Navbar() {
   const { cartItems } = useCart();
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +33,10 @@ export default function Navbar() {
   // ✅ Klik di luar cart dropdown untuk nutup
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsCartDropdownOpen(false);
       }
     };
@@ -55,19 +67,28 @@ export default function Navbar() {
 
       {/* Menu desktop */}
       <nav className="hidden md:flex items-center space-x-6">
-        <button onClick={() => router.push("/")} className="text-black font-semibold">
+        <button
+          onClick={() => router.push("/")}
+          className="text-black font-semibold"
+        >
           HOME
         </button>
-
-        <button onClick={() => router.push("/products")} className="text-black font-semibold">
+        <button
+          onClick={() => router.push("/products")}
+          className="text-black font-semibold"
+        >
           PRODUCTS
         </button>
-
-        <button onClick={() => router.push("/about")} className="text-black font-semibold">
+        <button
+          onClick={() => router.push("/about")}
+          className="text-black font-semibold"
+        >
           ABOUT US
         </button>
-
-        <button onClick={() => router.push("/contact")} className="text-black font-semibold">
+        <button
+          onClick={() => router.push("/contact")}
+          className="text-black font-semibold"
+        >
           CONTACT
         </button>
       </nav>
@@ -103,6 +124,7 @@ export default function Navbar() {
             )}
           </button>
 
+          {/* Cart Dropdown */}
           {isCartDropdownOpen && (
             <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg border rounded p-4 z-50">
               <h3 className="font-semibold mb-3 text-black flex items-center gap-2">
@@ -114,16 +136,21 @@ export default function Navbar() {
               ) : (
                 <ul className="divide-y divide-black max-h-64 overflow-y-auto">
                   {cartItems.map((item) => (
-                    <li key={item.id} className="py-2">
+                    <li
+                      key={`${item.id}-${item.size || "nosize"}-${item.color || "nocolor"}`}
+                      className="py-2"
+                    >
                       <div className="flex justify-between">
                         <p className="font-medium text-black">{item.name}</p>
                       </div>
                       <div className="text-xs text-black">
-                        Qty: {item.quantity}
+                        Qty: {item.quantity}{" "}
+                        {item.size && `| Size: ${item.size}`}{" "}
+                        {item.color && `| Color: ${item.color}`}
                       </div>
                       <div className="text-sm text-blue-600 font-semibold">
-                        Rp {item.price.toLocaleString()} x {item.quantity} ={" "}
-                        Rp {(item.price * item.quantity).toLocaleString()}
+                        Rp {item.price.toLocaleString()} x {item.quantity} = Rp{" "}
+                        {(item.price * item.quantity).toLocaleString()}
                       </div>
                     </li>
                   ))}
@@ -183,10 +210,7 @@ export default function Navbar() {
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
       >
-        <button
-          className="text-2xl mb-4"
-          onClick={() => setIsMenuOpen(false)}
-        >
+        <button className="text-2xl mb-4" onClick={() => setIsMenuOpen(false)}>
           ✕
         </button>
 

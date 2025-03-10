@@ -27,6 +27,7 @@ export default function Card({
   const { addToCart } = useCart();
 
   const [selectedSize, setSelectedSize] = useState("M");
+  // const [selectedColor, setSelectedColor] = useState("Merah"); ❌ Ga dipake lagi
 
   const handleAddToCart = () => {
     addToCart({
@@ -36,9 +37,12 @@ export default function Card({
       quantity: 1,
       image: imageUrl || fallbackImage,
       size: selectedSize,
+      color: "", // Atau kasih string kosong, atau hapus properti ini kalo di CartContext optional
     });
 
-    console.log(`${name} (size ${selectedSize}) berhasil ditambahkan ke keranjang!`);
+    console.log(
+      `${name} (size ${selectedSize}) berhasil ditambahkan ke keranjang!`
+    );
   };
 
   return (
@@ -65,6 +69,7 @@ export default function Card({
         <div className="mt-auto">
           <p className="font-bold text-blue-500 mt-2">Rp {price.toLocaleString()}</p>
 
+          {/* PILIH UKURAN */}
           <div className="mt-2">
             <label
               htmlFor={`size-${id}`}
@@ -85,6 +90,7 @@ export default function Card({
             </select>
           </div>
 
+          {/* BUTTON */}
           <button
             onClick={handleAddToCart}
             className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition w-full"
