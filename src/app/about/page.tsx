@@ -1,19 +1,18 @@
 "use client";
 
-import Carousel from "@/components/Carousel"; // Carousel dengan gambar berbeda dari homepage
+import Carousel from "@/components/Carousel";
 import Link from "next/link";
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* About Us Section */}
+      
       <section className="flex flex-col md:flex-row items-center justify-center min-h-screen p-10">
-        {/* Carousel */}
+        
         <div className="w-full md:w-1/2 flex justify-center">
           <Carousel images={["/about.jpg", "/about2.jpg", "/about3.jpg"]} />
         </div>
 
-        {/* Text Content */}
         <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0 px-6">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg mb-4">

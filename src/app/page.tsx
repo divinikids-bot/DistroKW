@@ -19,7 +19,7 @@ export default function Home() {
           <Carousel images={homeImages} />
         </div>
 
-        {/* Text Content */}
+
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mt-6 md:mt-0">
           <div className="text-sm bg-amber-600 text-white px-3 py-1 rounded inline-block mb-4">
             Premium Quality
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Komponen Produk Random */}
+     
       <div className="mt-[-50px] md:mt-[-80px]">
         <RandomItems />
       </div>

@@ -1,5 +1,4 @@
-import Cart from "@/components/cart"; // pastikan nama impornya benar
-
+import Cart from "@/components/cart"; 
 export default function CartPage() {
   return (
     <div className="bg-black min-h-screen text-white pt-20">

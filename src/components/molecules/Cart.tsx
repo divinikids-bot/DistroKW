@@ -25,7 +25,6 @@ export default function Cart() {
               key={item.id}
               className="border-b pb-2 flex items-center space-x-4 text-black opacity-100"
             >
-              {/* Gambar produk */}
               <div className="w-16 h-16 bg-black rounded overflow-hidden flex-shrink-0">
                 <Image
                   src={item.image || "https://via.placeholder.com/300x400?text=No+Image"}
@@ -36,7 +35,6 @@ export default function Cart() {
                 />
               </div>
 
-              {/* Info produk */}
               <div className="flex flex-col text-black opacity-100">
                 <div className="font-medium text-black">{item.name}</div>
                 <div className="text-sm text-black">Qty: {item.quantity}</div>

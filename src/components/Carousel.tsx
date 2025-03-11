@@ -27,7 +27,6 @@ export default function Carousel({ images }: CarouselProps) {
         height={500}
         className="w-full rounded-lg"
       />
-      {/* Tombol Navigasi */}
       <button
         onClick={prevSlide}
         className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-opacity-10 bg-black  text-white p-2 rounded-full"

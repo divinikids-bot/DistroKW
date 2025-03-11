@@ -8,11 +8,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-gray-100 text-black">
         <CartProvider>
-          <Navbar /> {/* ✅ Navbar selalu tampil */}
+          <Navbar /> 
           
           <main>{children}</main>
 
-          <Footer /> {/* ✅ Optional */}
+          <Footer />
         </CartProvider>
       </body>
     </html>

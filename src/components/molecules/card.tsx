@@ -27,7 +27,6 @@ export default function Card({
   const { addToCart } = useCart();
 
   const [selectedSize, setSelectedSize] = useState("M");
-  // const [selectedColor, setSelectedColor] = useState("Merah"); ❌ Ga dipake lagi
 
   const handleAddToCart = () => {
     addToCart({
@@ -37,7 +36,7 @@ export default function Card({
       quantity: 1,
       image: imageUrl || fallbackImage,
       size: selectedSize,
-      color: "", // Atau kasih string kosong, atau hapus properti ini kalo di CartContext optional
+      color: "",
     });
 
     console.log(
@@ -48,7 +47,6 @@ export default function Card({
   return (
     <div className="bg-white rounded-lg shadow p-4 flex flex-col justify-between h-full">
       <div className="flex flex-col h-full justify-between">
-        {/* BAGIAN ATAS */}
         <div className="mb-4">
           <Image
             src={imageUrl || fallbackImage}
@@ -65,11 +63,8 @@ export default function Card({
           <p className="text-sm text-gray-500">Stok: {stock}</p>
         </div>
 
-        {/* BAGIAN BAWAH */}
         <div className="mt-auto">
           <p className="font-bold text-blue-500 mt-2">Rp {price.toLocaleString()}</p>
-
-          {/* PILIH UKURAN */}
           <div className="mt-2">
             <label
               htmlFor={`size-${id}`}
@@ -90,7 +85,6 @@ export default function Card({
             </select>
           </div>
 
-          {/* BUTTON */}
           <button
             onClick={handleAddToCart}
             className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition w-full"
