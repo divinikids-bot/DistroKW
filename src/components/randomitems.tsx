@@ -110,7 +110,7 @@ export default function RandomItems() {
 
                     <Link
                       href={`/products/${item.objectId}`}
-                      className="block text-center bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+                      className="block text-center bg-green text-white py-2 rounded hover:bg-gray-800 transition"
                     >
                       Lihat Detail
                     </Link>
