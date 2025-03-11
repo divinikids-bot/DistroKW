@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-black py-12 px-6 lg:px-24 pt-32">
       <div className="max-w-7xl mx-auto">
-        {/* Judul Halaman */}
+        
         <div className="text-center text-white mb-16">
           <h1 className="text-4xl font-bold mb-4">Hubungi Kami</h1>
           <p className="text-lg text-gray-300">
@@ -14,7 +14,7 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Informasi Kontak */}
+
           <div className="bg-green-800 text-white rounded-xl p-8 flex flex-col justify-between">
             <div>
               <h2 className="text-3xl font-bold mb-4">Informasi Kontak</h2>
@@ -52,14 +52,12 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* Hiasan Lingkaran */}
+            
             <div className="mt-10 relative w-full h-40">
               <div className="absolute bottom-0 right-0 w-48 h-48 bg-green-700 opacity-30 rounded-full"></div>
             </div>
           </div>
 
-          {/* Formulir Kontak */}
           <div className="rounded-xl p-8 border bg-white items-center border-gray-200 shadow-md">
             <form className="space-y-6">
               <div>

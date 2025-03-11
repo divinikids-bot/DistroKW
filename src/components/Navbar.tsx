@@ -6,11 +6,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCart } from "@/components/contexts/CartContext";
 
-// ✅ Dynamic import buat react-icons
-const FiSearch = dynamic(
-  () => import("react-icons/fi").then((mod) => mod.FiSearch),
-  { ssr: false }
-);
+
 const FiShoppingBag = dynamic(
   () => import("react-icons/fi").then((mod) => mod.FiShoppingBag),
   { ssr: false }
@@ -30,7 +26,7 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  // ✅ Klik di luar cart dropdown untuk nutup
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -50,22 +46,20 @@ export default function Navbar() {
     };
   }, [isCartDropdownOpen]);
 
-  // ✅ Toggle buka/tutup cart dropdown saat icon cart diklik
   const toggleCartDropdown = () => {
     setIsCartDropdownOpen((prev) => !prev);
   };
 
   return (
     <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center relative z-50">
-      {/* Hamburger mobile */}
+      
       <button
         className="text-2xl text-black font-bold p-2 md:hidden"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         ☰
       </button>
-
-      {/* Menu desktop */}
+      
       <nav className="hidden md:flex items-center space-x-6">
         <button
           onClick={() => router.push("/")}
@@ -93,7 +87,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Logo */}
       <div>
         <Image
           src="/logo.png"
@@ -105,11 +98,8 @@ export default function Navbar() {
         />
       </div>
 
-      {/* Search & Cart */}
       <div className="flex items-center space-x-6 relative">
-        <FiSearch className="text-black text-xl cursor-pointer" />
-
-        {/* Cart */}
+      
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={toggleCartDropdown}
@@ -118,13 +108,12 @@ export default function Navbar() {
             <FiShoppingBag className="text-black text-xl cursor-pointer" />
 
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-gray-600 text-white text-xs rounded-full px-2 py-1">
+              <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full px-2 py-1">
                 {cartCount}
               </span>
             )}
           </button>
 
-          {/* Cart Dropdown */}
           {isCartDropdownOpen && (
             <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg border rounded p-4 z-50">
               <h3 className="font-semibold mb-3 text-black flex items-center gap-2">
@@ -157,7 +146,6 @@ export default function Navbar() {
                 </ul>
               )}
 
-              {/* Total */}
               {cartItems.length > 0 && (
                 <>
                   <div className="mt-4 border-t pt-2 text-sm text-gray-600">
@@ -196,7 +184,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Overlay Mobile */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -204,7 +191,6 @@ export default function Navbar() {
         />
       )}
 
-      {/* Mobile Menu */}
       <div
         className={`fixed top-0 left-0 w-2/3 h-full bg-white shadow-md p-4 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"

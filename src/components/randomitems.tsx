@@ -55,7 +55,6 @@ export default function RandomItems() {
 
   return (
     <section className="bg-black text-white py-5">
-      {/* Banner Image */}
       <div className="flex justify-center px-4 mb-8">
         <img
           src="/Landscapehome.png"
@@ -65,7 +64,6 @@ export default function RandomItems() {
         />
       </div>
 
-      {/* Produk */}
       <div className="px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
           {randomItems.map((item) => (

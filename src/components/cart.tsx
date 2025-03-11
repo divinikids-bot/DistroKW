@@ -26,16 +26,15 @@ export default function CartPage() {
             Lihat Produk
           </Link>
         </div>
+        
       ) : (
         <div className="grid md:grid-cols-3 gap-8">
-          {/* List Barang */}
           <div className="md:col-span-2 space-y-6">
             {cartItems.map((item) => (
               <div
-                key={`${item.id}-${item.size}-${item.color}`} // ✅ KEY UNIK di sini
+                key={`${item.id}-${item.size}-${item.color}`}
                 className="flex flex-col md:flex-row justify-between bg-zinc-900 p-4 rounded-xl shadow-md"
               >
-                {/* Left */}
                 <div className="flex space-x-4">
                   <div className="w-24 h-24 bg-white rounded-md overflow-hidden relative">
                     <Image
@@ -62,7 +61,6 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                {/* Right */}
                 <div className="flex flex-col justify-between items-end mt-4 md:mt-0">
                   <div className="flex items-center space-x-2">
                     <label htmlFor="quantity">Jumlah:</label>
@@ -74,7 +72,7 @@ export default function CartPage() {
                           parseInt(e.target.value),
                           item.size,
                           item.color
-                        ) // ✅ TAMBAH size dan color
+                        ) 
                       }
                       className="bg-zinc-800 text-white border border-gray-600 rounded px-2 py-1"
                     >
@@ -88,7 +86,7 @@ export default function CartPage() {
 
                   <div className="mt-2">
                     <button
-                      onClick={() => removeFromCart(item.id, item.size, item.color)} // ✅ TAMBAH size dan color
+                      onClick={() => removeFromCart(item.id, item.size, item.color)}
                       className="bg-red-600 text-white text-sm px-4 py-1 rounded hover:bg-red-700 transition"
                     >
                       Hapus
@@ -103,7 +101,6 @@ export default function CartPage() {
             ))}
           </div>
 
-          {/* Ringkasan Pesanan */}
           <div className="bg-zinc-900 p-6 rounded-xl shadow-md space-y-4 h-fit">
             <h2 className="text-lg font-semibold">
               RINGKASAN PESANAN | {cartItems.length} PRODUK
