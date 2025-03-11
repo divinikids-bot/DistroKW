@@ -37,10 +37,9 @@ export default function RandomItems() {
         setLoading(false);
       }
     };
-  
+
     fetchProducts();
   }, []);
-  
 
   // SHUFFLE RANDOM PRODUCTS (run once when products change)
   const randomItems = useMemo(() => {
@@ -83,7 +82,7 @@ export default function RandomItems() {
             {randomItems.map((item) => (
               <div
                 key={item.objectId}
-                className="border border-gray-700 rounded-xl bg-white text-black overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105"
+                className="flex flex-col border border-gray-700 rounded-xl bg-white text-black overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105"
               >
                 <Image
                   src={
@@ -97,20 +96,22 @@ export default function RandomItems() {
                   className="w-full h-64 object-cover"
                 />
 
-                <div className="p-4 flex flex-col justify-between h-full">
+                <div className="p-4 flex flex-col justify-between flex-grow min-h-[220px]">
+                  {/* Nama dan kategori */}
                   <div>
                     <h3 className="font-semibold text-lg mb-1">{item.nama}</h3>
                     <p className="text-sm text-gray-500 mb-2">{item.kategori}</p>
                   </div>
 
-                  <div className="mt-2">
+                  {/* Harga dan tombol */}
+                  <div className="mt-4">
                     <p className="font-bold text-blue-600 mb-4">
                       Rp {item.harga?.toLocaleString()}
                     </p>
 
                     <Link
                       href={`/products/${item.objectId}`}
-                      className="block text-center bg-green text-white py-2 rounded hover:bg-gray-800 transition"
+                      className="block text-center bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
                     >
                       Lihat Detail
                     </Link>
