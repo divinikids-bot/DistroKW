@@ -19,14 +19,13 @@ export default function Navbar() {
     0
   );
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
