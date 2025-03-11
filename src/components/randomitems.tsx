@@ -20,7 +20,6 @@ export default function RandomItems() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // FETCH PRODUCTS
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -28,15 +27,20 @@ export default function RandomItems() {
           "https://moralapparel-us.backendless.app/api/data/products?pageSize=20"
         );
         setProducts(response.data);
-      } catch (err: any) {
-        setError(err.message || "Terjadi kesalahan saat mengambil data.");
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Terjadi kesalahan yang tidak diketahui.");
+        }
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchProducts();
   }, []);
+  
 
   // SHUFFLE RANDOM PRODUCTS (run once when products change)
   const randomItems = useMemo(() => {
