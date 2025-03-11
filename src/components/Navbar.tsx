@@ -19,6 +19,7 @@ export default function Navbar() {
     0
   );
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
 
@@ -44,7 +45,7 @@ export default function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isCartDropdownOpen]);
-
+  
   const toggleCartDropdown = () => {
     setIsCartDropdownOpen((prev) => !prev);
   };
