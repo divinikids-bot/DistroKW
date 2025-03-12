@@ -49,7 +49,7 @@ export default function TestimonialCarousel() {
 
   return (
     <section className="bg-black-100 py-12 px-6">
-      <h2 className="text-3xl font-bold text-center mb-8 text-White">
+      <h2 className="text-3xl font-bold text-center mb-8 text-white">
         Testimonial by our divine sucsessor
       </h2>
 
@@ -63,13 +63,12 @@ export default function TestimonialCarousel() {
             className="rounded-full mb-4 object-cover"
           />
           <p className="text-center text-gray-700 mb-6 italic">
-            "{testimonials[index].message}"
+            {`"${testimonials[index].message}"`}
           </p>
           <h3 className="font-semibold text-black">{testimonials[index].name}</h3>
           <span className="text-sm text-gray-500">{testimonials[index].role}</span>
         </div>
 
-        {/* Dots Navigation */}
         <div className="flex justify-center mt-6 space-x-2">
           {testimonials.map((_, i) => (
             <button
