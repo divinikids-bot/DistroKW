@@ -41,7 +41,6 @@ export default function RandomItems() {
     fetchProducts();
   }, []);
 
-  // SHUFFLE RANDOM PRODUCTS (run once when products change)
   const randomItems = useMemo(() => {
     if (products.length === 0) return [];
     const shuffled = [...products].sort(() => 0.5 - Math.random());
@@ -50,7 +49,7 @@ export default function RandomItems() {
 
   return (
     <section className="bg-black text-white py-5">
-      {/* Hero / Banner */}
+
       <div className="flex justify-center px-4 mb-8">
         <Image
           src="/Landscapehome.png"
@@ -61,21 +60,18 @@ export default function RandomItems() {
         />
       </div>
 
-      {/* Loading */}
       {loading && (
         <div className="text-center py-10 text-white">
           <p>Loading produk pilihan...</p>
         </div>
       )}
 
-      {/* Error */}
       {error && (
         <div className="text-center py-10 text-red-500">
           <p>Error: {error}</p>
         </div>
       )}
 
-      {/* Items */}
       {!loading && !error && (
         <div className="px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
@@ -97,13 +93,12 @@ export default function RandomItems() {
                 />
 
                 <div className="p-4 flex flex-col justify-between flex-grow min-h-[220px]">
-                  {/* Nama dan kategori */}
+                  
                   <div>
                     <h3 className="font-semibold text-lg mb-1">{item.nama}</h3>
                     <p className="text-sm text-gray-500 mb-2">{item.kategori}</p>
                   </div>
 
-                  {/* Harga dan tombol */}
                   <div className="mt-4">
                     <p className="font-bold text-blue-600 mb-4">
                       Rp {item.harga?.toLocaleString()}

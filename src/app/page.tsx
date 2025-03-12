@@ -5,6 +5,7 @@ import TestimonialCarousel from "@/components/testimonial";
 import { Bebas_Neue } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
+
 export default function Home() {
   const homeImages = ["/kaos.jpg", "/kaos2.jpg", "/kaos3.jpg"];
 
@@ -24,7 +25,8 @@ export default function Home() {
           <p className="text-lg mb-2">Dare to wear the power of Oni 👹</p>
           <p className="text-lg mb-2">
             Strength and fear in one tee. Channel the fierce spirit of the legendary Oni demon—symbols of raw strength, mystery, and fearlessness.
-            This premium tee combines bold design with a dark, captivating energy that turns heads and commands respect. Are you ready to unleash your inner Oni?</p>
+            This premium tee combines bold design with a dark, captivating energy that turns heads and commands respect. Are you ready to unleash your inner Oni?
+          </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
             <Link href="/products">
@@ -42,7 +44,7 @@ export default function Home() {
       </section>
 
       <div className="text-center mt-16 px-6">
-        <h2 className="text-5xl md:text-6xl tracking-wide text-amber-500 drop-shadow-md bebas">
+        <h2 className={`${bebasNeue.className} text-5xl md:text-6xl tracking-wide text-amber-500 drop-shadow-md`}>
           Unleash Your Inner Hero
         </h2>
       </div>
