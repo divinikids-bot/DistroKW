@@ -13,7 +13,7 @@ export default function TeamCard({ name, email, phone, picture }: TeamCardProps)
       <Image
         src={picture}
         alt={name}
-        width={96}   // 24 * 4 (karena tailwind "w-24 h-24" -> 6rem -> 96px)
+        width={96}
         height={96}
         className="rounded-full mx-auto mb-4"
       />
