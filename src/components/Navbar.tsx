@@ -75,6 +75,7 @@ export default function Navbar() {
         <button onClick={() => handleNavigate("/products")} className="text-black font-semibold">PRODUCTS</button>
         <button onClick={() => handleNavigate("/about")} className="text-black font-semibold">ABOUT US</button>
         <button onClick={() => handleNavigate("/contact")} className="text-black font-semibold">CONTACT</button>
+        <button onClick={() => handleNavigate("/teams")} className="text-black font-semibold">TEAMS</button>
       </nav>
 
       {/* LOGO */}
@@ -208,6 +209,12 @@ export default function Navbar() {
           className="block w-full text-left text-black font-semibold py-2"
         >
           ABOUT US
+        </button>
+        <button
+          onClick={() => handleNavigate("Teams")}
+            className="block w-full text-left text-black font-semibold py-2"
+          >
+            TEAMS
         </button>
         <button
           onClick={() => handleNavigate("/contact")}
