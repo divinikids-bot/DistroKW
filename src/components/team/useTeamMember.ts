@@ -1,7 +1,21 @@
 import { useState, useEffect } from "react";
 
+type TeamMember = {
+  name: {
+    first: string;
+    last: string;
+  };
+  email: string;
+  phone: string;
+  picture: {
+    large: string;
+    medium: string;
+    thumbnail: string;
+  };
+};
+
 export default function useTeamMembers(results: number = 6) {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
