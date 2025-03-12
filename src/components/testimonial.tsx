@@ -8,31 +8,31 @@ const testimonials = [
     name: "Karinabluuu",
     role: "Customer",
     image: "/karina.jpg",
-    message: "Kaosnya nyaman banget dipakai, desainnya juga unik! Bakal repeat order lagi.",
+    message: "Kaosnya nyaman banget dipakai, desainnya juga unik! Bakal repeat order lagi",
   },
   {
     name: "Aerichandesuu",
     role: "Customer",
     image: "/aerichan.jpg",
-    message: "Kualitas sablon dan bahan kaosnya premium. Gak kalah sama brand luar!",
+    message: "Kualitas sablon dan bahan kaosnya premium. Gak kalah sama brand luar",
   },
   {
     name: "WinterMin-jongg",
     role: "Customer",
     image: "/winter.jpg",
-    message: "Pengiriman cepat, pelayanan ramah. Pokoknya recommended banget!",
+    message: "Pengiriman cepat, pelayanan ramah. Pokoknya recommended banget",
   },
   {
     name: "imnotningning",
     role: "Customer",
     image: "/ningning.jpg",
-    message: "Sangat puas dengan pelayanan dan kualitas produk dari DivineClothing!",
+    message: "Sangat puas dengan pelayanan dan kualitas produk dari DivineClothing",
   },
   {
     name: "ShinRyujin",
     role: "Customer",
     image: "/ryujin.jpg",
-    message: "Desain kekinian, bahan adem, dan harga terjangkau. Suka banget belanja di sini!",
+    message: "Desain kekinian, bahan adem, dan harga terjangkau. Suka banget belanja di sini",
   },
 ];
 
